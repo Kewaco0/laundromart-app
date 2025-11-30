@@ -1,0 +1,26 @@
+import { createContext, useContext, useState } from 'react';
+
+const InventoryContext = createContext();
+
+export const InventoryProvider = ({ children }) => {
+  const [inventory, setInventory] = useState([]);
+
+  const value = {
+    inventory,
+    setInventory
+  };
+
+  return (
+    <InventoryContext.Provider value={value}>
+      {children}
+    </InventoryContext.Provider>
+  );
+};
+
+export const useInventory = () => {
+  const context = useContext(InventoryContext);
+  if (!context) {
+    throw new Error('useInventory must be used within InventoryProvider');
+  }
+  return context;
+};
