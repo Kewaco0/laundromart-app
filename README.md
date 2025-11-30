@@ -1,1 +1,1 @@
-# laundromart-app
+Laundromat Frontend\nRun npm install then npm start\n
