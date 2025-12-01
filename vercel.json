@@ -1,8 +1,12 @@
-cat > vercel.json << 'EOF'
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
   "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "installCommand": "npm install"
+  "outputDirectory": "frontend/build",
+  "installCommand": "cd frontend && npm install"
 }
-EOF
